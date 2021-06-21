@@ -19,8 +19,8 @@ public class BasicConfiguration  extends WebSecurityConfigurerAdapter {
         http.cors();
         http.csrf().disable()
                 .authorizeRequests()
-               // .antMatchers(HttpMethod.GET, "/transacoes/**").permitAll()
-               // .antMatchers(HttpMethod.GET, "/actuator/prometheus/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/transacoes/**").hasAuthority("SCOPE_profile")
+                .antMatchers(HttpMethod.GET, "/actuator/prometheus/**").permitAll()
                 .antMatchers("/**").permitAll()
                 .and()
                 .sessionManagement()

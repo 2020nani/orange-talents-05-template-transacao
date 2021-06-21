@@ -1,5 +1,7 @@
 package br.com.api.transacao.transacoes;
 
+import org.springframework.data.domain.Page;
+
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -34,6 +36,7 @@ public class EventoTransacaoDto {
         this.emailUsuarioCartao = emailUsuarioCodificado;
         this.efetivadaEm = evento.getEfetivadaEm();
     }
+
 
     public String getIdTransacao() {
         return idTransacao;
@@ -81,4 +84,3 @@ public class EventoTransacaoDto {
                 '}';
     }
 }
-

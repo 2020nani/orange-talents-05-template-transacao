@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class TransacaoController {
@@ -35,7 +36,7 @@ public class TransacaoController {
 
     @GetMapping("transacoes/{idCartao}")
     public ResponseEntity<?> listaTransacoes(@PathVariable("idCartao") String idCartao,
-                                                                     @PageableDefault(sort = "efetivadaEm",direction = Direction.ASC, page = 0, size = 10) Pageable paginacao){
+                                             @PageableDefault(sort = "efetivadaEm",direction = Direction.ASC, page = 0, size = 10) Pageable paginacao){
 
         Page<EventoDeTransacao> transacoes = transacaoRepository.findByCartaoId(idCartao,paginacao);
         if(transacoes.isEmpty()){
@@ -46,6 +47,7 @@ public class TransacaoController {
 
         criarGauge(listatransacao);
         return ResponseEntity.ok().body(listatransacao);
+
 
     }
 }
